@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="xposed_desc">解除较新非国行 HyperOS 3 对“双击电源键唤起刷卡页”(mi_pay) 的地区限制。作用域：系统框架。</string>
-</resources>
