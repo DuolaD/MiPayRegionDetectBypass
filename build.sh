@@ -60,7 +60,7 @@ javac --release 17 -nowarn -cp "$ANDROID_JAR:$BUILD/stubs" -d "$BUILD/classes" \
 cp "$BUILD/base.apk" "$BUILD/unsigned.apk"
 (cd "$BUILD/dex" && zip -q -X "$BUILD/unsigned.apk" classes.dex)
 "$BT/zipalign" -f -p 4 "$BUILD/unsigned.apk" "$BUILD/aligned.apk"
-APK="$OUT/FixMiPay-RegionBypass-v${VERSION_NAME}.apk"
+APK="$OUT/MiPayRegionDetectBypass-v${VERSION_NAME}.apk"
 "$BT/apksigner" sign --ks "$KEYSTORE" --ks-pass "pass:$KS_PASS" --ks-key-alias "$KS_ALIAS" \
     --out "$APK" "$BUILD/aligned.apk"
 rm -f "$APK.idsig"

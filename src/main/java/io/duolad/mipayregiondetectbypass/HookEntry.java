@@ -1,4 +1,4 @@
-package com.fixmipay.regionbypass;
+package io.duolad.mipayregiondetectbypass;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodReplacement;
@@ -21,7 +21,7 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
  */
 public class HookEntry implements IXposedHookLoadPackage {
 
-    private static final String TAG = "FixMiPayRegionBypass: ";
+    private static final String TAG = "MiPayRegionDetectBypass: ";
     private static final String FEATURE_CLASS = "miui.hardware.input.shortcut.MiInputShortcutFeature";
     private static final String[] METHODS = {
             "isCnRegionWithCardSupport",
