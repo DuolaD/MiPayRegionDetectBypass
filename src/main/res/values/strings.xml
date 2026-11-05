@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fix MiPay Region Bypass</string>
+    <string name="xposed_desc">解除 HyperOS 国际版对双击电源键唤起小米智能卡刷卡页的地区限制。作用域：系统框架。</string>
+</resources>
