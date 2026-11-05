@@ -6,11 +6,21 @@
 #   JAVA_HOME     JDK 根目录（未设置时使用 PATH 里的 javac）
 #   KEYSTORE      签名用的 keystore（默认 ~/.android/debug.keystore，不存在会自动生成调试密钥）
 #
+#   VERSION_NAME  版本名（默认 1.0.0；CI 中取自 Release Tag）
+#   VERSION_CODE  版本号（默认由 VERSION_NAME 的 x.y.z 换算为 x*10000+y*100+z）
+#
 # 用法：./build.sh   产物输出到本目录 out/
 set -euo pipefail
 
-VERSION_NAME="1.0.0"
-VERSION_CODE=1
+VERSION_NAME="${VERSION_NAME:-1.0.0}"
+VERSION_NAME="${VERSION_NAME#v}"
+if [ -z "${VERSION_CODE:-}" ]; then
+    if [[ "$VERSION_NAME" =~ ^([0-9]+)\.([0-9]+)\.([0-9]+) ]]; then
+        VERSION_CODE=$(( BASH_REMATCH[1] * 10000 + BASH_REMATCH[2] * 100 + BASH_REMATCH[3] ))
+    else
+        echo "VERSION_NAME=$VERSION_NAME 不是 x.y.z 格式，请另外指定 VERSION_CODE" >&2; exit 1
+    fi
+fi
 MIN_SDK=30
 TARGET_SDK=36
 
